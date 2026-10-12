@@ -145,14 +145,6 @@ The frontend starts at `http://localhost:3000`.
 
 ---
 
-## 💡 Viva & Evaluation Talking Points
-
-1. **How is the "Vibe Check" Tone Toggle implemented?**
-   - The user selects their tone preference in the UI.
-   - When sending a message (or regenerating an existing one), the frontend transmits the chosen tone (`professional`, `casual`, or `concise`) along with the conversation ID.
-   - The server selects a tailored system instruction modifier (`TONE_INSTRUCTIONS[tone]`), altering temperature and persona before sending to OpenAI/Claude or the streaming engine.
-2. **How does real-time token streaming work?**
-   - Implemented via Server-Sent Events (SSE) using HTTP chunked transfer encoding (`text/event-stream`).
    - The frontend reads the stream via the Streams API (`response.body.getReader()`) and renders text chunk-by-chunk with typewriter animation and blinking cursor.
    - Supports user-initiated cancellation via `AbortController`.
 3. **How is data persistence guaranteed?**
